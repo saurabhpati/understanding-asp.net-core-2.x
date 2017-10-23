@@ -6,14 +6,29 @@ using Shared.Models;
 
 namespace Globomantics.Services
 {
-    public class ConferenceMemoryService: IConferenceService
+    public class ConferenceMemoryService : IConferenceService
     {
 
         private readonly List<ConferenceModel> conferences = new List<ConferenceModel>();
 
         public ConferenceMemoryService()
         {
-
+            conferences.Add(new ConferenceModel
+            {
+                Id = 1,
+                Name = "NDC",
+                Location = "Oslo",
+                Start = new DateTime(2017, 6, 12),
+                AttendeeTotal = 2132
+            });
+            conferences.Add(new ConferenceModel
+            {
+                Id = 2,
+                Name = "IT/DevConnections",
+                Location = "San Francisco",
+                Start = new DateTime(2017, 10, 18),
+                AttendeeTotal = 3210
+            });
         }
 
         public Task Add(ConferenceModel model)
