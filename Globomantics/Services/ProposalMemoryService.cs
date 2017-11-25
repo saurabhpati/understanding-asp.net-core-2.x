@@ -44,9 +44,17 @@ namespace Globomantics.Services
             return Task.CompletedTask;
         }
 
+        /// <summary>
+        /// Gets all proposals for a partuclar conference.
+        /// </summary>
+        /// <param name="conferenceId">The conference id for which the proposals are required.</param>
+        /// <returns>Enumerale of all proposals in a particular conference.</returns>
         public Task<IEnumerable<ProposalModel>> GetAll(int conferenceId)
         {
-            return Task.Run(() => proposals.AsEnumerable());
+            return Task.Run(() => 
+            {
+                return this.proposals.Where(proposal => proposal.ConferenceId.Equals(conferenceId));
+            });
         }
 
         public Task<ProposalModel> Approve(int proposalId)
